@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import "./styles/App.css";
 import PagePatientList from "./pages/PatientList/PatientList";
+import PagePatientProfile from "./pages/PatientProfile/PatientProfile";
+import PagePatientCreation from "./pages/PatientCreation/PatientCreation";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/patients" element={<PagePatientList />} />
+          <Route path="/patients/:id" element={<PagePatientProfile />} />
+          <Route path="/patient/add" element={<PagePatientCreation />} />
         </Routes>
       </Router>
     </>

@@ -1,27 +1,46 @@
 .patientlist-lines-container {
   margin: 20px 20px;
+  display: flex;
 }
 
 .patientlist-line {
-  // width: 350px;
   border: 1px solid white;
   padding: 5px 0;
 
-  label {
-    margin-left: 10px;
+  .patientlist-line-label {
+    margin: 10px;
     width: 350px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 30px;
   }
 
-  input {
+  .patientlist-line-data {
     width: 150px;
     padding: 5px 0 5px 20px;
     border: none;
+    background-color: lightgrey;
+    color: black;
+    font-size: 16px;
   }
-  select {
-    padding: 5px 0;
-    width: 170px;
-    padding-left: 20px;
+}
+
+.patientlist-buttons-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.patientlist-button {
+  border: 1px solid white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(159, 158, 158);
   }
 }

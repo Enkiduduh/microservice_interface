@@ -1,0 +1,95 @@
+.patientprofile-lines-container {
+  margin: 20px 20px;
+}
+
+.patientprofile-line {
+  border: 1px solid white;
+  padding: 5px 0;
+
+  label,
+  .patientprofile-line-label {
+    margin: 10px;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+  }
+
+  input {
+    width: 150px;
+    padding: 8px 0 8px 20px;
+    border: none;
+    background-color: lightgrey;
+    color: black;
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    outline: none;
+    &:focus {
+      background-color: lightseagreen;
+    }
+  }
+
+  .patientprofile-line-data {
+    width: 150px;
+    padding: 5px 0 5px 20px;
+    border: none;
+    background-color: lightgrey;
+    color: black;
+    font-size: 16px;
+  }
+
+  select {
+    padding: 8px 0;
+    width: 170px;
+    padding-left: 20px;
+    background-color: lightgrey;
+    border: none;
+    color: black;
+    font-size: 16px;
+  }
+}
+
+.patientprofile-buttons-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.patientprofile-button {
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.patientprofile-button-large {
+  width: 280px;
+  background-color: darkslateblue;
+}
+
+.patientprofile-button-validation {
+  width: 120px;
+  background-color: darkgreen;
+}
+.patientprofile-button-cancel {
+  width: 120px;
+  background-color: darkred;
+}
+
+.patientprofile-button-return {
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-size: 20px;
+  margin: 20px;
+  background-color: darkslateblue;
+  cursor: pointer;
+  &:hover {
+    background-color: purple;
+  }
+}

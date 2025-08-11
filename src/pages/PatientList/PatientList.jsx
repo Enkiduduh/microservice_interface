@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 function PatientList() {
   const [patients, setPatients] = useState([]);
 
@@ -17,51 +17,47 @@ function PatientList() {
 
   return (
     <div className="patientlist-container">
-      {patients.map((p) => (
-        <form key={p.id} className="patientlist-lines-container">
-          <div className="patientlist-line">
-            <label htmlFor="form-nom">
-              Nom:
-              <input type="text" id="form-nom" value={p.nom} />
-            </label>
+      {patients.map((patient) => (
+        <div className="patientlist-lines-container" key={patient.id}>
+          <div>
+            <div className="patientlist-line">
+              <div className="patientlist-line-label">
+                Nom:
+                <div className="patientlist-line-data">{patient.nom ?? ""}</div>
+              </div>
+              <div className="patientlist-line-label">
+                Prénom:
+                <div className="patientlist-line-data">
+                  {patient.prenom ?? ""}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="patientlist-line">
-            <label htmlFor="form-prenom">
-              Prénom:
-              <input type="text" id="form-prenom" value={p.prenom} />
-            </label>
+          <div>
+            <div className="patientlist-line">
+              <div className="patientlist-line-label">
+                Date de naissance:
+                <div className="patientlist-line-data">
+                  {patient.dateNaissance ?? ""}
+                </div>
+              </div>
+              {patient.genre == "M" ? (
+                <div className="patientlist-line-label">
+                  Genre:
+                  <div className="patientlist-line-data">Homme</div>
+                </div>
+              ) : (
+                <div className="patientlist-line-label">
+                  Genre:
+                  <div className="patientlist-line-data">Femme</div>
+                </div>
+              )}
+            </div>
           </div>
-          <div className="patientlist-line">
-            <label htmlFor="form-dateNaissance">
-              Date de naissance:
-              <input
-                type="text"
-                id="form-dateNaissance"
-                value={p.dateNaissance}
-              />
-            </label>
-          </div>
-          <div className="patientlist-line">
-            <label htmlFor="">Genre:
-              <select htmlFor="form-genre" value={p.genre}>
-                <option value="M">Homme</option>
-                <option value="F">Femme</option>
-              </select>
-            </label>
-          </div>
-          <div className="patientlist-line">
-            <label htmlFor="form-adresse">
-              Adresse:
-              <input type="text" id="form-adresse" value={p.adresse} />
-            </label>
-          </div>
-          <div className="patientlist-line">
-            <label htmlFor="form-telephone">
-              Téléphone:
-              <input type="text" id="form-telephone" value={p.telephone} />
-            </label>
-          </div>
-        </form>
+          <Link className="patientlist-button" to={`/patients/${patient.id}`}>
+            Consulter la fiche du patient
+          </Link>
+        </div>
       ))}
     </div>
   );

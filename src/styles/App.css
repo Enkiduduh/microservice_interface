@@ -1,0 +1,24 @@
+.patientlist-lines-container {
+  margin: 20px 20px;
+}
+
+.patientlist-line {
+  border: 1px solid white;
+  padding: 5px 0;
+}
+.patientlist-line label {
+  margin-left: 10px;
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+}
+.patientlist-line input {
+  width: 150px;
+  padding: 5px 0 5px 20px;
+  border: none;
+}
+.patientlist-line select {
+  padding: 5px 0;
+  width: 170px;
+  padding-left: 20px;
+}/*# sourceMappingURL=App.css.map */

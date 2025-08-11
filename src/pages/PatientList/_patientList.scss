@@ -1,0 +1,27 @@
+.patientlist-lines-container {
+  margin: 20px 20px;
+}
+
+.patientlist-line {
+  // width: 350px;
+  border: 1px solid white;
+  padding: 5px 0;
+
+  label {
+    margin-left: 10px;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  input {
+    width: 150px;
+    padding: 5px 0 5px 20px;
+    border: none;
+  }
+  select {
+    padding: 5px 0;
+    width: 170px;
+    padding-left: 20px;
+  }
+}

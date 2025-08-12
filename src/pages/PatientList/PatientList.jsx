@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 function PatientList() {
   const [patients, setPatients] = useState([]);
 

@@ -1,4 +1,10 @@
+@forward "./variables.scss";
+
 @use "../pages/PatientList/patientList";
 @use "../pages/PatientCreation/patientCreation";
 @use "../pages/PatientProfile/patientProfile";
+@use "../pages/Connexion/connexion";
+@use "../pages/Home/home";
 
+@use "../layout/Header/header";
+@use "../layout/Footer/footer";

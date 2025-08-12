@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 function PatientProfile() {
   const [patient, setPatient] = useState(null);
   const [isUpdateActive, setIsUpdateActive] = useState(false);
+  const [isDeletedActive, setIsDeletedActive] = useState(false);
+
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [nom, setNom] = useState("");
@@ -98,6 +100,26 @@ function PatientProfile() {
     setPatient(updated);
   };
 
+  const onSubmitDelete = async (e) => {
+    const confirm = window.confirm("Etes-vous sûr de vouloir supprimer la fiche du patient ?")
+    if (confirm) {
+
+      const res = await fetch(`/api/patients/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        console.error("DELETE failed", res.status, err);
+        return;
+      }
+    }
+     window.alert("La fiche du patient a bien été éffacée. Retour à la liste des patients.");
+    navigate("/patients");
+  };
+
+
   if (!patient) return <div>Chargement...</div>;
 
   const handleValidationForm = (e) => {
@@ -132,6 +154,13 @@ function PatientProfile() {
       >
         Retour à la liste des patients
       </div>
+      {/* {isDeletedActive && (
+        <div id="patientprofile-modal-container">
+          <div>Etes-vous sûr de vouloir supprimer la fiche du patient ?</div>
+          <div>Oui</div>
+          <div>Non</div>
+        </div>
+      )} */}
       <div className="patientprofile-container">
         {isUpdateActive ? (
           <form className="patientprofile-lines-container">
@@ -280,11 +309,19 @@ function PatientProfile() {
 
         {!isUpdateActive && (
           <div className="patientprofile-lines-container">
-            <div
-              className="patientprofile-button patientprofile-button-large"
-              onClick={handleActiveUpdate}
-            >
-              Mettre à jour le profil du patient
+            <div className="patientprofile-buttons-container">
+              <div
+                className="patientprofile-button patientprofile-button-large"
+                onClick={handleActiveUpdate}
+              >
+                Mettre à jour le profil du patient
+              </div>
+              <div
+                className="patientprofile-button patientprofile-button-large"
+                onClick={onSubmitDelete}
+              >
+                Supprimer la fiche du patient
+              </div>
             </div>
           </div>
         )}

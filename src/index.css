@@ -17,8 +17,9 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  /* place-items: center; */
+  min-width: 100vw;
   min-height: 100vh;
   font-family: Helvetica, sans-serif;
+  justify-content: center;
 }

@@ -1,0 +1,47 @@
+@use "../../styles/variables" as vars;
+
+.header-container {
+  height: 12vh;
+  background: vars.$background2-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: vars.$primary-color;
+}
+
+.header-logo {
+  width: 50%;
+  text-align: left;
+  margin-left: 80px;
+}
+.header-logo-link {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  padding: 15px 20px;
+  border-radius: 10px;
+  transition: all 0.33s ease;
+  cursor: pointer;
+  &:hover {
+    background: vars.$tertiary-color;
+    color: vars.$quaternary-color;
+  }
+}
+
+.header-nav-links {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-nav-link {
+  padding: 15px 20px;
+  margin: 0 20px;
+  border-radius: 10px;
+  transition: all 0.33s ease;
+  cursor: pointer;
+  &:hover {
+    background: vars.$tertiary-color;
+    color: vars.$quaternary-color;
+  }
+}

@@ -1,6 +1,7 @@
 .patientlist-lines-container {
-  margin: 20px 20px;
+  margin: 50px 20px;
   display: flex;
+  justify-content: center;
 }
 
 .patientlist-line {
@@ -41,6 +42,15 @@
 }
 .patientlist-button:hover {
   background-color: rgb(159, 158, 158);
+}
+
+.patientcreation-button {
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-size: 20px;
 }
 
 .patientprofile-lines-container {
@@ -134,4 +144,145 @@
 }
 .patientprofile-button-return:hover {
   background-color: purple;
+}
+
+.connexion-lines-container {
+  margin: 80px auto;
+  width: 50vw;
+}
+
+.connexion-line {
+  border: 1px solid white;
+  padding: 5px 0;
+}
+.connexion-line label,
+.connexion-line .connexion-line-label {
+  margin: 10px;
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+.connexion-line input {
+  width: 150px;
+  padding: 8px 0 8px 20px;
+  border: none;
+  background-color: lightgrey;
+  color: black;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  outline: none;
+}
+.connexion-line input:focus {
+  background-color: lightseagreen;
+}
+.connexion-line .connexion-line-data {
+  width: 150px;
+  padding: 5px 0 5px 20px;
+  border: none;
+  background-color: lightgrey;
+  color: black;
+  font-size: 16px;
+}
+.connexion-line select {
+  padding: 8px 0;
+  width: 170px;
+  padding-left: 20px;
+  background-color: lightgrey;
+  border: none;
+  color: black;
+  font-size: 16px;
+}
+
+.connexion-buttons-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.connexion-button {
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 30px auto;
+  font-size: 20px;
+  width: 200px;
+}
+
+.home-container {
+  width: 100%;
+  min-height: 90vh;
+  background-image: url("../../../public/medilabo.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.header-container {
+  height: 12vh;
+  background: #f9f8ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0e2f4e;
+}
+
+.header-logo {
+  width: 50%;
+  text-align: left;
+  margin-left: 80px;
+}
+
+.header-logo-link {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  padding: 15px 20px;
+  border-radius: 10px;
+  transition: all 0.33s ease;
+  cursor: pointer;
+}
+.header-logo-link:hover {
+  background: #2563eb;
+  color: #f9f8ff;
+}
+
+.header-nav-links {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-nav-link {
+  padding: 15px 20px;
+  margin: 0 20px;
+  border-radius: 10px;
+  transition: all 0.33s ease;
+  cursor: pointer;
+}
+.header-nav-link:hover {
+  background: #2563eb;
+  color: #f9f8ff;
+}
+
+.footer-container {
+  width: 100vw;
+  height: 30vh;
+  background-color: #2563eb;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-logo {
+  font-size: 30px;
+  margin-top: 50px;
+}
+
+.footer-upperline {
+  width: 80vw;
+  border: 1px solid whitesmoke;
+  margin-top: 30px;
 }/*# sourceMappingURL=App.css.map */

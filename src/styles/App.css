@@ -44,6 +44,11 @@
   background-color: rgb(159, 158, 158);
 }
 
+.patientcreation-container {
+  margin: 60px;
+  width: 600px;
+}
+
 .patientcreation-button {
   border: 1px solid white;
   padding: 10px 20px;
@@ -53,25 +58,101 @@
   font-size: 20px;
 }
 
+.patientcreation-lines-container {
+  margin: 20px 20px;
+}
+
+.patientcreation-line {
+  border: 1px solid white;
+  padding: 5px 0;
+}
+.patientcreation-line label,
+.patientcreation-line .patientcreation-line-label {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  font-size: 20px;
+}
+.patientcreation-line input {
+  width: 300px;
+  padding: 8px 0 8px 20px;
+  border: none;
+  background-color: lightgrey;
+  color: black;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  outline: none;
+}
+.patientcreation-line input:focus {
+  background-color: lightseagreen;
+}
+.patientcreation-line .patientcreation-line-data {
+  width: 150px;
+  padding: 5px 0 5px 20px;
+  border: none;
+  background-color: lightgrey;
+  color: black;
+  font-size: 16px;
+}
+.patientcreation-line select {
+  padding: 8px 0;
+  width: 320px;
+  padding-left: 20px;
+  background-color: lightgrey;
+  border: none;
+  color: black;
+  font-size: 16px;
+}
+
+.patientcreation-info {
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.patientcreation-button {
+  border: 1px solid white;
+  width: 250px;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 30px 0;
+  background-color: darkslateblue;
+  cursor: pointer;
+  background-color: #2563eb;
+}
+.patientcreation-button:hover {
+  background-color: #f9f8ff;
+  color: #0e2f4e;
+}
+
+.patientprofile-container {
+  margin: 60px;
+}
+
 .patientprofile-lines-container {
   margin: 20px 20px;
+  width: 550px;
 }
 
 .patientprofile-line {
   border: 1px solid white;
   padding: 5px 0;
+  font-size: 20px;
 }
 .patientprofile-line label,
 .patientprofile-line .patientprofile-line-label {
   margin: 10px;
-  width: 350px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
 }
 .patientprofile-line input {
-  width: 150px;
+  width: 300px;
   padding: 8px 0 8px 20px;
   border: none;
   background-color: lightgrey;
@@ -84,16 +165,16 @@
   background-color: lightseagreen;
 }
 .patientprofile-line .patientprofile-line-data {
-  width: 150px;
-  padding: 5px 0 5px 20px;
+  width: 300px;
+  padding: 10px 0 10px 20px;
   border: none;
-  background-color: lightgrey;
-  color: black;
+  background-color: #f9f8ff;
+  color: #0e2f4e;
   font-size: 16px;
 }
 .patientprofile-line select {
   padding: 8px 0;
-  width: 170px;
+  width: 320px;
   padding-left: 20px;
   background-color: lightgrey;
   border: none;
@@ -103,7 +184,7 @@
 
 .patientprofile-buttons-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: left;
   align-items: center;
 }
 
@@ -112,26 +193,38 @@
   padding: 10px 20px;
   text-align: center;
   border-radius: 5px;
-  margin: 0 auto;
+  margin-right: 10px;
   font-size: 20px;
+  transition: all 0.33s ease;
+  cursor: pointer;
 }
 
 .patientprofile-button-large {
-  width: 280px;
-  background-color: darkslateblue;
+  background-color: #2563eb;
+}
+.patientprofile-button-large:hover {
+  background-color: #f9f8ff;
+  color: #0e2f4e;
 }
 
 .patientprofile-button-validation {
   width: 120px;
+  background-color: #2563eb;
+}
+.patientprofile-button-validation:hover {
   background-color: darkgreen;
 }
 
 .patientprofile-button-cancel {
   width: 120px;
+  background-color: #2563eb;
+}
+.patientprofile-button-cancel:hover {
   background-color: darkred;
 }
 
 .patientprofile-button-return {
+  width: 150px;
   border: 1px solid white;
   padding: 10px 20px;
   text-align: center;
@@ -139,43 +232,48 @@
   margin: 0 auto;
   font-size: 20px;
   margin: 20px;
-  background-color: darkslateblue;
   cursor: pointer;
+  background-color: #2563eb;
 }
 .patientprofile-button-return:hover {
-  background-color: purple;
+  background-color: #f9f8ff;
+  color: #0e2f4e;
 }
 
 .connexion-lines-container {
-  margin: 80px auto;
-  width: 50vw;
+  margin: 60px auto 100px auto;
+  width: 400px;
+  border: 1px solid white;
+  padding: 40px;
 }
 
-.connexion-line {
-  border: 1px solid white;
-  padding: 5px 0;
+.connexion-title {
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
 }
+
 .connexion-line label,
 .connexion-line .connexion-line-label {
   margin: 10px;
-  width: 350px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
+  font-size: 24px;
 }
 .connexion-line input {
-  width: 150px;
+  width: 200px;
   padding: 8px 0 8px 20px;
   border: none;
-  background-color: lightgrey;
+  background-color: #f9f8ff;
   color: black;
   font-size: 16px;
   font-family: Helvetica, sans-serif;
   outline: none;
 }
 .connexion-line input:focus {
-  background-color: lightseagreen;
+  background-color: #f9f3cf;
 }
 .connexion-line .connexion-line-data {
   width: 150px;
@@ -185,30 +283,21 @@
   color: black;
   font-size: 16px;
 }
-.connexion-line select {
-  padding: 8px 0;
-  width: 170px;
-  padding-left: 20px;
-  background-color: lightgrey;
-  border: none;
-  color: black;
-  font-size: 16px;
-}
-
-.connexion-buttons-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
 
 .connexion-button {
+  width: 150px;
   border: 1px solid white;
   padding: 10px 20px;
   text-align: center;
   border-radius: 5px;
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   font-size: 20px;
-  width: 200px;
+  cursor: pointer;
+  background-color: #2563eb;
+}
+.connexion-button:hover {
+  background-color: #f9f8ff;
+  color: #0e2f4e;
 }
 
 .home-container {
@@ -221,12 +310,14 @@
 }
 
 .header-container {
-  height: 12vh;
+  height: 15vh;
   background: #f9f8ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #0e2f4e;
+  position: relative;
+  font-size: 18px;
 }
 
 .header-logo {
@@ -237,12 +328,14 @@
 
 .header-logo-link {
   width: 200px;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   padding: 15px 20px;
   border-radius: 10px;
   transition: all 0.33s ease;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
 }
 .header-logo-link:hover {
   background: #2563eb;
@@ -261,10 +354,28 @@
   border-radius: 10px;
   transition: all 0.33s ease;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
 }
 .header-nav-link:hover {
   background: #2563eb;
   color: #f9f8ff;
+}
+
+.header-user-info {
+  color: black;
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top: 2px solid #2563eb;
+  border-bottom: 2px solid #2563eb;
+  border-left: 2px solid #2563eb;
+  padding: 2px 15px;
+  background-color: #f9f3cf;
+  font-size: 14px;
 }
 
 .footer-container {

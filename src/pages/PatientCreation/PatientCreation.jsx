@@ -57,10 +57,20 @@ function PatientCreation() {
     onSubmit(e);
   };
 
+  const handleReturnToPatientsList = () => {
+    navigate("/patients");
+  };
+
   return (
-    <div className="patientprofile-container">
-      <form className="patientprofile-lines-container">
-        <div className="patientprofile-line">
+    <div className="patientcreation-container">
+      <form className="patientcreation-lines-container">
+      <div
+        className="patientcreation-button"
+        onClick={handleReturnToPatientsList}
+      >
+        Annuler
+      </div>
+        <div className="patientcreation-line">
           <label htmlFor="form-nom">
             Nom:*
             <input
@@ -73,7 +83,7 @@ function PatientCreation() {
             />
           </label>
         </div>
-        <div className="patientprofile-line">
+        <div className="patientcreation-line">
           <label htmlFor="form-prenom">
             Prénom:*
             <input
@@ -86,7 +96,7 @@ function PatientCreation() {
             />
           </label>
         </div>
-        <div className="patientprofile-line">
+        <div className="patientcreation-line">
           <label htmlFor="form-dateNaissance">
             Date de naissance:*
             <input
@@ -98,7 +108,7 @@ function PatientCreation() {
             />
           </label>
         </div>
-        <div className="patientprofile-line">
+        <div className="patientcreation-line">
           <label htmlFor="">
             Genre:*
             <select
@@ -113,7 +123,7 @@ function PatientCreation() {
             </select>
           </label>
         </div>
-        <div className="patientprofile-line">
+        <div className="patientcreation-line">
           <label htmlFor="form-adresse">
             Adresse:
             <input
@@ -126,7 +136,7 @@ function PatientCreation() {
             />
           </label>
         </div>
-        <div className="patientprofile-line">
+        <div className="patientcreation-line">
           <label htmlFor="form-telephone">
             Téléphone:
             <input
@@ -139,11 +149,11 @@ function PatientCreation() {
             />
           </label>
         </div>
+        <div className="patientcreation-info">* Champs obligatoires</div>
         <div className="patientcreation-button" onClick={handleValidForm}>
           Créer le patient
         </div>
       </form>
-      <div>* Champs obligatoires</div>
     </div>
   );
 }

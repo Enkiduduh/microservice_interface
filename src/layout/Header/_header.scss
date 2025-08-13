@@ -1,12 +1,14 @@
 @use "../../styles/variables" as vars;
 
 .header-container {
-  height: 12vh;
+  height: 15vh;
   background: vars.$background2-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: vars.$primary-color;
+  position: relative;
+  font-size: 18px;
 }
 
 .header-logo {
@@ -16,12 +18,15 @@
 }
 .header-logo-link {
   width: 200px;
-  display: flex;
-  justify-content: center;
+  text-align: center;
   padding: 15px 20px;
   border-radius: 10px;
   transition: all 0.33s ease;
   cursor: pointer;
+  text-decoration: none; // Important pour les Link
+  color: inherit; // Important pour les Link
+  display: inline-block; // Pour que padding fonctionne bien
+
   &:hover {
     background: vars.$tertiary-color;
     color: vars.$quaternary-color;
@@ -40,8 +45,26 @@
   border-radius: 10px;
   transition: all 0.33s ease;
   cursor: pointer;
+  text-decoration: none; // Important pour les Link
+  color: inherit; // Important pour les Link
+  display: inline-block; // Pour que padding fonctionne bien
   &:hover {
     background: vars.$tertiary-color;
     color: vars.$quaternary-color;
   }
+}
+
+.header-user-info {
+  color: black;
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top: 2px solid vars.$tertiary-color;
+  border-bottom: 2px solid vars.$tertiary-color;
+  border-left: 2px solid vars.$tertiary-color;
+  padding: 2px 15px;
+  background-color: vars.$background1-color;
+  font-size: 14px;
 }

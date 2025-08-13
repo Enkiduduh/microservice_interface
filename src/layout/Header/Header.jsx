@@ -1,38 +1,47 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../security/AuthProvider";
 
 function Header() {
+  const { authed, logout, user } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/connexion"); // Redirection après déconnexion
+  };
+
   const navigate = useNavigate();
 
-  const handleLinkToPatientsList = () => {
-    navigate("/patients");
+  const handleAuthAction = () => {
+    if (authed) {
+      handleLogout();
+    } else {
+      navigate("/connexion");
+    }
   };
 
-  const handleLinkToPatientCreation = () => {
-    navigate("/patients/add");
-  };
-
-  const handleLinkToAccount = () => {
-    navigate("/connexion");
-  };
-
-  const handleLinkToHome = () => {
-    navigate("/");
-  };
   return (
     <div className="header-container">
-      <div className="header-logo" >
-        <div className="header-logo-link" onClick={handleLinkToHome}>MediLabo Solutions</div>
+      <div className="header-logo">
+        <Link className="header-logo-link" to="/">
+          MediLabo Solutions
+        </Link>
       </div>
       <nav className="header-nav-links">
-        <div className="header-nav-link" onClick={handleLinkToPatientsList}>
+        <Link className="header-nav-link" to="/patients">
           Liste des patients
-        </div>
-        <div className="header-nav-link" onClick={handleLinkToPatientCreation}>
+        </Link>
+        <Link className="header-nav-link" to="/patients/add">
           Ajouter un patient
+        </Link>
+
+        <div className="header-nav-link" onClick={handleAuthAction}>
+          {authed ? "Se déconnecter" : "Se connecter "}
         </div>
-        <div className="header-nav-link" onClick={handleLinkToAccount}>
-          Se connecter
-        </div>
+        {authed && user && (
+          <div className="header-user-info">
+            Connecté en tant que Docteur {user}
+          </div>
+        )}
       </nav>
     </div>
   );

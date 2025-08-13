@@ -4,6 +4,7 @@ import {
   Routes,
   Outlet,
 } from "react-router-dom";
+import { AuthProvider } from "./security/AuthProvider";
 import RequireAuth from "./security/RequireAuth";
 import "./styles/App.css";
 import PagePatientList from "./pages/PatientList/PatientList";
@@ -18,26 +19,28 @@ function App() {
   return (
     <>
       <Router>
-        <Header />
-        <Routes>
-          {/* Routes protégées */}
-          <Route
-            element={
-              <RequireAuth>
-                <Outlet />
-              </RequireAuth>
-            }
-          >
-            <Route path="/patients" element={<PagePatientList />} />
-            <Route path="/patients/:id" element={<PagePatientProfile />} />
-            <Route path="/patients/add" element={<PagePatientCreation />} />
-          </Route>
+        <AuthProvider>
+          <Header />
+          <Routes>
+            {/* Routes protégées */}
+            <Route
+              element={
+                <RequireAuth>
+                  <Outlet />
+                </RequireAuth>
+              }
+            >
+              <Route path="/patients" element={<PagePatientList />} />
+              <Route path="/patients/:id" element={<PagePatientProfile />} />
+              <Route path="/patients/add" element={<PagePatientCreation />} />
+            </Route>
 
-          {/* Routes publiques */}
-          <Route path="/connexion" element={<PageConnexion />} />
-          <Route path="/" element={<PageHome />} />
-        </Routes>
-        <Footer />
+            {/* Routes publiques */}
+            <Route path="/connexion" element={<PageConnexion />} />
+            <Route path="/" element={<PageHome />} />
+          </Routes>
+          <Footer />
+        </AuthProvider>
       </Router>
     </>
   );

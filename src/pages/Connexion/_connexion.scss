@@ -1,34 +1,39 @@
+@use "../../styles/variables" as vars;
+
 .connexion-lines-container {
-  margin: 80px auto;
-  width: 50vw;
-  
-}
-
-.connexion-line {
+  margin: 60px auto 100px auto;
+  width: 400px;
   border: 1px solid white;
-  padding: 5px 0;
+  padding: 40px;
 
+}
+.connexion-title {
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+}
+.connexion-line {
   label,
   .connexion-line-label {
     margin: 10px;
-    width: 350px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 40px;
+     font-size:24px;
   }
 
   input {
-    width: 150px;
+    width: 200px;
     padding: 8px 0 8px 20px;
     border: none;
-    background-color: lightgrey;
+    background-color: vars.$background2-color;
     color: black;
     font-size: 16px;
     font-family: Helvetica, sans-serif;
     outline: none;
     &:focus {
-      background-color: lightseagreen;
+      background-color: vars.$background1-color;
     }
   }
 
@@ -40,30 +45,20 @@
     color: black;
     font-size: 16px;
   }
-
-  select {
-    padding: 8px 0;
-    width: 170px;
-    padding-left: 20px;
-    background-color: lightgrey;
-    border: none;
-    color: black;
-    font-size: 16px;
-  }
-}
-
-.connexion-buttons-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .connexion-button {
+  width: 150px;
   border: 1px solid white;
   padding: 10px 20px;
   text-align: center;
   border-radius: 5px;
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   font-size: 20px;
-  width: 200px;
+  cursor: pointer;
+  background-color: vars.$tertiary-color;
+  &:hover {
+    background-color: vars.$background2-color;
+    color: vars.$primary-color;
+  }
 }

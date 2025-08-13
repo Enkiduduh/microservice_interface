@@ -1,15 +1,21 @@
+@use "../../styles/variables" as vars;
+
+.patientprofile-container {
+  margin: 60px;
+}
 .patientprofile-lines-container {
   margin: 20px 20px;
+  width: 550px;
 }
 
 .patientprofile-line {
   border: 1px solid white;
   padding: 5px 0;
+  font-size: 20px;
 
   label,
   .patientprofile-line-label {
     margin: 10px;
-    width: 350px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +23,7 @@
   }
 
   input {
-    width: 150px;
+    width: 300px;
     padding: 8px 0 8px 20px;
     border: none;
     background-color: lightgrey;
@@ -31,17 +37,17 @@
   }
 
   .patientprofile-line-data {
-    width: 150px;
-    padding: 5px 0 5px 20px;
+    width: 300px;
+    padding: 10px 0 10px 20px;
     border: none;
-    background-color: lightgrey;
-    color: black;
+    background-color: vars.$background2-color;
+    color: vars.$primary-color;
     font-size: 16px;
   }
 
   select {
     padding: 8px 0;
-    width: 170px;
+    width: 320px;
     padding-left: 20px;
     background-color: lightgrey;
     border: none;
@@ -52,7 +58,7 @@
 
 .patientprofile-buttons-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: left;
   align-items: center;
 }
 
@@ -61,25 +67,37 @@
   padding: 10px 20px;
   text-align: center;
   border-radius: 5px;
-  margin: 0 auto;
+  margin-right: 10px;
   font-size: 20px;
+  transition: all 0.33s ease;
+  cursor: pointer;
 }
 
 .patientprofile-button-large {
-  width: 280px;
-  background-color: darkslateblue;
+  background-color: vars.$tertiary-color;
+  &:hover {
+    background-color: vars.$background2-color;
+    color: vars.$primary-color;
+  }
 }
 
 .patientprofile-button-validation {
   width: 120px;
-  background-color: darkgreen;
+  background-color: vars.$tertiary-color;
+  &:hover {
+    background-color: darkgreen;
+  }
 }
 .patientprofile-button-cancel {
   width: 120px;
-  background-color: darkred;
+  background-color: vars.$tertiary-color;
+  &:hover {
+    background-color: darkred;
+  }
 }
 
 .patientprofile-button-return {
+  width: 150px;
   border: 1px solid white;
   padding: 10px 20px;
   text-align: center;
@@ -87,9 +105,10 @@
   margin: 0 auto;
   font-size: 20px;
   margin: 20px;
-  background-color: darkslateblue;
   cursor: pointer;
+  background-color: vars.$tertiary-color;
   &:hover {
-    background-color: purple;
+    background-color: vars.$background2-color;
+    color: vars.$primary-color;
   }
 }

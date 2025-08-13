@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../security/AuthProvider";
+
 function Connexion() {
-  const [patient, setPatient] = useState(null);
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -18,7 +20,7 @@ function Connexion() {
   };
   const url = `/api/connexion`;
 
-  const login = async () => {
+  const loginUser = async () => {
     const body = new URLSearchParams();
     body.append("identifier", formData.username); // email ou username
     body.append("password", formData.password);
@@ -38,7 +40,13 @@ function Connexion() {
       }
 
       const feedback = await response.json();
-      console.log(feedback);
+      console.log("connexion reussie:", feedback);
+
+      console.log("Connexion réussie:", feedback);
+
+      // Mettre à jour le contexte d'authentification
+      login(feedback.user || { username: formData.username });
+
       navigate("/patients");
     } catch (error) {
       console.error("Erreur réseau:", error);
@@ -47,6 +55,7 @@ function Connexion() {
 
   return (
     <div className="connexion-container">
+      <h1 className="connexion-title">Interface de connexion des médecins</h1>
       <form className="connexion-lines-container">
         <div className="connexion-line">
           <label htmlFor="form-username">
@@ -74,7 +83,7 @@ function Connexion() {
             />
           </label>
         </div>
-        <div className="connexion-button " onClick={login}>
+        <div className="connexion-button " onClick={loginUser}>
           Se connecter
         </div>
       </form>

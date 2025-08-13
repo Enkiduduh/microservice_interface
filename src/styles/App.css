@@ -245,6 +245,8 @@
   width: 400px;
   border: 1px solid white;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .connexion-title {
@@ -285,7 +287,7 @@
 }
 
 .connexion-button {
-  width: 150px;
+  width: 200px;
   border: 1px solid white;
   padding: 10px 20px;
   text-align: center;
@@ -293,6 +295,7 @@
   margin: 30px auto 0 auto;
   font-size: 20px;
   cursor: pointer;
+  color: #f9f8ff;
   background-color: #2563eb;
 }
 .connexion-button:hover {

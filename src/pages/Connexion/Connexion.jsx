@@ -20,9 +20,11 @@ function Connexion() {
   };
   const url = `/api/connexion`;
 
-  const loginUser = async () => {
+  const loginUser = async (e) => {
+    e?.preventDefault?.();
+
     const body = new URLSearchParams();
-    body.append("identifier", formData.username); // email ou username
+    body.append("username", formData.username); // email ou username
     body.append("password", formData.password);
     try {
       const response = await fetch(url, {
@@ -83,9 +85,9 @@ function Connexion() {
             />
           </label>
         </div>
-        <div className="connexion-button " onClick={loginUser}>
+        <button type="submit" className="connexion-button " onClick={loginUser}>
           Se connecter
-        </div>
+        </button>
       </form>
     </div>
   );

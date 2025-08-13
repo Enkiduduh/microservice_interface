@@ -42,7 +42,11 @@ function PatientCreation() {
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
       console.error("POST failed", res.status, err);
+      window.alert("Erreur, impossible de créer la fiche du patient.");
       return;
+    } else {
+      window.alert("Patient créée avec succès. Retour à la liste des patients");
+      navigate("/patients");
     }
     const newPatient = await res.json();
     setPatient(newPatient);
@@ -51,8 +55,6 @@ function PatientCreation() {
   const handleValidForm = (e) => {
     e.preventDefault();
     onSubmit(e);
-    window.alert("Patient créée avec succès. Retour à la liste des patients");
-    navigate("/patients");
   };
 
   return (

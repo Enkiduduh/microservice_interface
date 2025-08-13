@@ -8,7 +8,7 @@ function Header() {
   };
 
   const handleLinkToPatientCreation = () => {
-    navigate("/patient/add");
+    navigate("/patients/add");
   };
 
   const handleLinkToAccount = () => {

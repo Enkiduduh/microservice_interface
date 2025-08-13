@@ -19,15 +19,13 @@ function Connexion() {
   const url = `/api/connexion`;
 
   const login = async () => {
-    const payload = {
-      username: formData.username,
-      password: formData.password,
-    };
+    const body = new URLSearchParams();
+    body.append("identifier", formData.username); // email ou username
+    body.append("password", formData.password);
     try {
       const response = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body,
         credentials: "include",
       });
 

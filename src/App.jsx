@@ -2,8 +2,9 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
+  Outlet,
 } from "react-router-dom";
+import RequireAuth from "./security/RequireAuth";
 import "./styles/App.css";
 import PagePatientList from "./pages/PatientList/PatientList";
 import PagePatientProfile from "./pages/PatientProfile/PatientProfile";
@@ -19,9 +20,20 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/patients" element={<PagePatientList />} />
-          <Route path="/patients/:id" element={<PagePatientProfile />} />
-          <Route path="/patient/add" element={<PagePatientCreation />} />
+          {/* Routes protégées */}
+          <Route
+            element={
+              <RequireAuth>
+                <Outlet />
+              </RequireAuth>
+            }
+          >
+            <Route path="/patients" element={<PagePatientList />} />
+            <Route path="/patients/:id" element={<PagePatientProfile />} />
+            <Route path="/patients/add" element={<PagePatientCreation />} />
+          </Route>
+
+          {/* Routes publiques */}
           <Route path="/connexion" element={<PageConnexion />} />
           <Route path="/" element={<PageHome />} />
         </Routes>

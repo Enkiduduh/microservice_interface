@@ -112,3 +112,18 @@
     color: vars.$primary-color;
   }
 }
+
+///////////////////////////////////////////////
+/// NOTES*
+/// //////////////////////
+///
+
+#patientprofile-flex-central-container {
+  display: flex;
+}
+
+.patientprofile-notes-container {
+  width: 500px;
+  height: 300px;
+  background-color: red;
+}

@@ -240,6 +240,16 @@
   color: #0e2f4e;
 }
 
+#patientprofile-flex-central-container {
+  display: flex;
+}
+
+.patientprofile-notes-container {
+  width: 500px;
+  height: 300px;
+  background-color: red;
+}
+
 .connexion-lines-container {
   margin: 60px auto 100px auto;
   width: 400px;

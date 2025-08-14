@@ -1,8 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import FormProfile from "../../components/FormProfile/FormProfile";
+import BlocProfile from "../../components/BlocProfile/BlocProfile";
 
 function PatientProfile() {
   const [patient, setPatient] = useState(null);
+  const [notes, setNotes] = useState(null);
+
   const [isUpdateActive, setIsUpdateActive] = useState(false);
   const [isDeletedActive, setIsDeletedActive] = useState(false);
 
@@ -37,6 +41,7 @@ function PatientProfile() {
   const navigate = useNavigate();
 
   const url = `/api/patients/${id}`;
+  const urlNotes = `/api/notes/${id}`;
 
   useEffect(() => {
     if (patient) {
@@ -72,6 +77,20 @@ function PatientProfile() {
 
     loadPatient().catch(console.error);
   }, [url]);
+
+  useEffect(() => {
+    const loadNotesPatient = async () => {
+      const res = await fetch(urlNotes, {
+        credentials: "include",
+      });
+      if (!res.ok) throw new Error("Notes not found");
+      const data = await res.json();
+      console.log(data)
+      setNotes(data);
+    };
+
+    loadNotesPatient().catch(console.error);
+  }, [urlNotes]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -157,190 +176,65 @@ function PatientProfile() {
         >
           Retour
         </div>
-        {isUpdateActive ? (
-          <form className="patientprofile-lines-container">
-            <div className="patientprofile-line">
-              <label htmlFor="form-nom">
-                Nom:
-                <input
-                  type="text"
-                  id="form-nom"
-                  name="nom"
-                  placeholder={patient.nom ?? ""}
-                  value={formData.nom}
-                  onChange={ChangeFormInfo}
-                />
-              </label>
-            </div>
-            <div className="patientprofile-line">
-              <label htmlFor="form-prenom">
-                Prénom:
-                <input
-                  type="text"
-                  id="form-prenom"
-                  name="prenom"
-                  value={formData.prenom}
-                  placeholder={patient.prenom ?? ""}
-                  onChange={ChangeFormInfo}
-                />
-              </label>
-            </div>
-            <div className="patientprofile-line">
-              <label htmlFor="form-dateNaissance">
-                Date de naissance:
-                <input
-                  type="date"
-                  id="form-dateNaissance"
-                  name="dateNaissance"
-                  value={formData.dateNaissance}
-                  defaultValue={patient.dateNaissance ?? ""}
-                  onChange={ChangeFormInfo}
-                />
-              </label>
-            </div>
-            <div className="patientprofile-line">
-              <label htmlFor="">
-                Genre:
-                <select
-                  htmlFor="form-genre"
-                  name="genre"
-                  value={formData.genre}
-                  placeholder={patient.genre ?? ""}
-                  onChange={ChangeFormInfo}
-                >
-                  <option value="M">Homme</option>
-                  <option value="F">Femme</option>
-                </select>
-              </label>
-            </div>
-            <div className="patientprofile-line">
-              <label htmlFor="form-adresse">
-                Adresse:
-                <input
-                  type="text"
-                  id="form-adresse"
-                  name="adresse"
-                  value={formData.adresse}
-                  placeholder={patient.adresse ?? ""}
-                  onChange={ChangeFormInfo}
-                />
-              </label>
-            </div>
-            <div className="patientprofile-line">
-              <label htmlFor="form-telephone">
-                Téléphone:
-                <input
-                  type="text"
-                  id="form-telephone"
-                  name="telephone"
-                  value={formData.telephone}
-                  placeholder={patient.telephone ?? ""}
-                  onChange={ChangeFormInfo}
-                />
-              </label>
-            </div>
-          </form>
-        ) : (
-          <div className="patientprofile-lines-container">
-            <div className="patientprofile-line">
-              <div className="patientprofile-line-label">
-                Nom:
-                <div className="patientprofile-line-data">
-                  {patient.nom ?? ""}
-                </div>
-              </div>
-            </div>
-            <div className="patientprofile-line">
-              <div className="patientprofile-line-label">
-                Prénom:
-                <div className="patientprofile-line-data">
-                  {patient.prenom ?? ""}
-                </div>
-              </div>
-            </div>
+        <div id="patientprofile-flex-central-container">
+          <div>
+            {isUpdateActive ? (
+              <FormProfile
+                patient_data={patient}
+                formData_data={formData}
+                ChangeFormInfo_onChange={ChangeFormInfo}
+              />
+            ) : (
+              <BlocProfile patient_data={patient} />
+            )}
 
-            <div className="patientprofile-line">
-              <div className="patientprofile-line-label">
-                Date de naissance:
-                <div className="patientprofile-line-data">
-                  {patient.dateNaissance ?? ""}
+            {!isUpdateActive && (
+              <div className="patientprofile-lines-container">
+                <div className="patientprofile-buttons-container">
+                  <div
+                    className="patientprofile-button patientprofile-button-large"
+                    onClick={handleActiveUpdate}
+                  >
+                    Mettre à jour
+                  </div>
+                  <div
+                    className="patientprofile-button patientprofile-button-large"
+                    onClick={onSubmitDelete}
+                  >
+                    Suppression
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="patientprofile-line">
-              {patient.genre == "M" ? (
-                <div className="patientprofile-line-label">
-                  Genre:
-                  <div className="patientprofile-line-data">Homme</div>
-                </div>
-              ) : (
-                <div className="patientprofile-line-label">
-                  Genre:
-                  <div className="patientprofile-line-data">Femme</div>
-                </div>
-              )}
-            </div>
-
-            <div className="patientprofile-line">
-              <div className="patientprofile-line-label">
-                Adresse:
-                <div className="patientprofile-line-data">
-                  {patient.adresse ?? ""}
+            )}
+            {isUpdateActive && (
+              <div className="patientprofile-lines-container">
+                <div className="patientprofile-buttons-container">
+                  <div
+                    className={`patientprofile-button patientprofile-button-validation ${
+                      !isFormValid ? "disabled" : ""
+                    }`}
+                    onClick={isFormValid ? handleValidForm : undefined}
+                    style={{ cursor: isFormValid ? "pointer" : "not-allowed" }}
+                  >
+                    Valider
+                  </div>
+                  <div
+                    className="patientprofile-button patientprofile-button-cancel"
+                    onClick={handleCancelUpdate}
+                  >
+                    Annuler
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="patientprofile-line">
-              <div className="patientprofile-line-label">
-                Téléphone:
-                <div className="patientprofile-line-data">
-                  {patient.telephone ?? ""}
-                </div>
-              </div>
-            </div>
+            )}
           </div>
-        )}
-
-        {!isUpdateActive && (
-          <div className="patientprofile-lines-container">
-            <div className="patientprofile-buttons-container">
-              <div
-                className="patientprofile-button patientprofile-button-large"
-                onClick={handleActiveUpdate}
-              >
-                Mettre à jour
-              </div>
-              <div
-                className="patientprofile-button patientprofile-button-large"
-                onClick={onSubmitDelete}
-              >
-                Suppression
-              </div>
-            </div>
+          <div className="patientprofile-notes-container">
+            <div>Notes: </div>
+            {/* {notes.map((n, idx) => {
+              <div key={idx}>{n.content}</div>;
+            })} */}
           </div>
-        )}
-        {isUpdateActive && (
-          <div className="patientprofile-lines-container">
-            <div className="patientprofile-buttons-container">
-              <div
-                className={`patientprofile-button patientprofile-button-validation ${
-                  !isFormValid ? "disabled" : ""
-                }`}
-                onClick={isFormValid ? handleValidForm : undefined}
-                style={{ cursor: isFormValid ? "pointer" : "not-allowed" }}
-              >
-                Valider
-              </div>
-              <div
-                className="patientprofile-button patientprofile-button-cancel"
-                onClick={handleCancelUpdate}
-              >
-                Annuler
-              </div>
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </>
   );

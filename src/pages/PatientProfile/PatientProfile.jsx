@@ -7,6 +7,11 @@ import BlocProfile from "../../components/BlocProfile/BlocProfile";
 function PatientProfile() {
   const [patient, setPatient] = useState(null);
   const [notes, setNotes] = useState(null);
+  const [prevoyance, setPrevoyance] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [statusColor, setStatusColor] = useState(null);
+
+  const [isKeywordsActive, setIsKeywordsActive] = useState(false);
 
   const [isUpdateActive, setIsUpdateActive] = useState(false);
   const [isDeletedActive, setIsDeletedActive] = useState(false);
@@ -49,6 +54,7 @@ function PatientProfile() {
   const url = `/api/patients/${id}`;
   const urlNotes = `/api/notes/${id}`;
   const urlAddNotes = `/api/notes`;
+  const urlPrevoyance = `/api/prevoyance/patient/${id}/risk`;
 
   useEffect(() => {
     if (patient) {
@@ -152,31 +158,50 @@ function PatientProfile() {
     navigate("/patients");
   };
 
-  if (!patient) return <div>Chargement...</div>;
-
-  const handleValidationForm = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    onSubmit(e);
-  };
-
-  const handleActiveUpdate = () => {
-    setIsUpdateActive(true);
-  };
-
-  const handleValidForm = (e) => {
-    e.preventDefault();
-    setIsUpdateActive(false);
-    handleValidationForm(e);
-  };
-
-  const handleCancelUpdate = () => {
-    setIsUpdateActive(false);
-  };
-
-  const handleReturnToPatientsList = () => {
-    navigate("/patients");
-  };
+  useEffect(() => {
+    const riskEngine = async () => {
+      try {
+        const res = await fetch(urlPrevoyance, {
+          credentials: "include",
+        });
+        const data = await res.json(); // {status, matchedCount, matchedKeywords}
+        setPrevoyance(data);
+        switch (data.status) {
+          case "none":
+            setStatus("Aucun risque");
+            setStatusColor("green");
+            break;
+          case "early":
+            setStatus("Risque limité");
+            setStatusColor("yellow");
+            break;
+          case "inDanger":
+            setStatus("Danger");
+            setStatusColor("darkorange");
+            break;
+          case "EarlyOnset":
+            setStatus("Apparition précoce");
+            setStatusColor("darkred");
+            break;
+        }
+        if (!res.ok) {
+          console.error("GET failed", res.status, data);
+          window.alert(
+            "Erreur, impossible de vérifier la prévoyance du diabête du patient."
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Erreur lors de la vérification de la prévoyance:",
+          error
+        );
+        window.alert(
+          "Erreur, impossible de vérifier la prévoyance du diabête du patient."
+        );
+      }
+    };
+    riskEngine();
+  }, [urlPrevoyance]);
 
   /////////
 
@@ -215,6 +240,38 @@ function PatientProfile() {
     }
   };
 
+  const handleActiveKeywordsDisplay = () => {
+    setIsKeywordsActive((prev) => !prev);
+  };
+
+  if (!patient) return <div>Chargement...</div>;
+
+  const handleValidationForm = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    onSubmit(e);
+  };
+
+  const handleActiveUpdate = () => {
+    setIsUpdateActive(true);
+  };
+
+  const handleValidForm = (e) => {
+    e.preventDefault();
+    setIsUpdateActive(false);
+    handleValidationForm(e);
+  };
+
+  const handleCancelUpdate = () => {
+    setIsUpdateActive(false);
+  };
+
+  const handleReturnToPatientsList = () => {
+    navigate("/patients");
+  };
+
+  //////////////
+
   return (
     <>
       <div className="patientprofile-container">
@@ -226,8 +283,36 @@ function PatientProfile() {
             Retour
           </div>
           <div className="patientprofile-status-container">
-            <span>Prévoyance Santé: </span>
-            <span> xxxx</span>
+            <div className="patientprofile-status-flex">
+              <div id="patientprofile-status-title">Prévoyance diabête: </div>
+              <div
+                className="patientprofile-status-badge"
+                style={{ backgroundColor: statusColor }}
+              ></div>
+              {status && <div className="patientprofile-status"> {status}</div>}
+            </div>
+            {prevoyance && (
+              <div className="patientprofile-keywords-display-modal">
+                <div
+                  onClick={handleActiveKeywordsDisplay}
+                  className="patientprofile-keywords-active"
+                >
+                  Voir les {prevoyance.matchedCount} symptômes
+                </div>
+                <div
+                  className="patientprofile-keywords-container"
+                  style={{ display: isKeywordsActive ? "flex" : "none" }}
+                >
+                  {isKeywordsActive
+                    ? prevoyance.matchedKeywords.map((k, idx) => (
+                        <div className="patientprofile-keyword" key={idx}>
+                          {k}
+                        </div>
+                      ))
+                    : null}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div id="patientprofile-flex-central-container">

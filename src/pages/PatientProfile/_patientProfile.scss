@@ -119,6 +119,9 @@
   font-size: 20px;
   margin: 20px;
   cursor: pointer;
+    display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: vars.$tertiary-color;
   &:hover {
     background-color: vars.$background2-color;
@@ -141,13 +144,63 @@
   margin: 20px;
   background-color: vars.$tertiary-color;
   // height: 50px;
-  width: 800px;
+  width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#patientprofile-status-title {
+  width: 200px;
+}
+
+.patientprofile-status-flex {
+  display:flex;
+  align-items: center;
+}
+.patientprofile-status {
+
+margin: 0 10px;
+}
+
+.patientprofile-status-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin: 0 10px;
+}
+
+.patientprofile-keywords-display-modal {
+  position: relative;
+}
+.patientprofile-keywords-active {
+  text-align: right;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: vars.$background2-color;
+  border-radius: 8px;;
+  color: vars.$primary-color;
+}
+
+.patientprofile-keywords-container {
+position: absolute;
+width: 160px;
+background-color: vars.$background2-color;
+top:34px;
+left: 50%;
+padding: 20px;
+transform: translateX(-50%);
+color: vars.$primary-color;
+flex-direction: column;
+}
+.patientprofile-keyword {
+  padding: 5px 0;
 }
 
 ///////////////////////////////////////////////
 /// NOTES*
 /// //////////////////////
-///
+
 
 #patientprofile-flex-central-container {
   display: flex;

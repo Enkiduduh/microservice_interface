@@ -130,7 +130,10 @@
 }
 
 .patientprofile-container {
-  margin: 60px;
+  margin: 30px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .patientprofile-lines-container {
@@ -228,6 +231,10 @@
   background-color: darkred;
 }
 
+.patientprofile-upper-flex {
+  display: flex;
+}
+
 .patientprofile-button-return {
   width: 150px;
   border: 1px solid white;
@@ -243,6 +250,18 @@
 .patientprofile-button-return:hover {
   background-color: #f9f8ff;
   color: #0e2f4e;
+}
+
+.patientprofile-status-container {
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-size: 20px;
+  margin: 20px;
+  background-color: #2563eb;
+  width: 800px;
 }
 
 #patientprofile-flex-central-container {
@@ -299,6 +318,13 @@
   overflow-y: scroll;
   min-height: 100px;
   max-height: 300px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.patientprofile-note-content {
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .connexion-lines-container {

@@ -38,14 +38,6 @@ function PatientProfile() {
     content: "",
   });
 
-  const ChangeNote = (e) => {
-    let { name, value } = e.target;
-    setNoteData({
-      ...noteData,
-      [name]: value,
-    });
-  };
-
   const ChangeFormInfo = (e) => {
     let { name, value } = e.target;
     setFormData({
@@ -192,7 +184,7 @@ function PatientProfile() {
     e.preventDefault();
     const payload = {
       patientId: noteData.patientId,
-      content: noteData.content,
+      content: noteData.content.replaceAll("\r\n", "\n").replaceAll("\r", "\n"),
     };
 
     const res = await fetch(urlAddNotes, {
@@ -226,11 +218,17 @@ function PatientProfile() {
   return (
     <>
       <div className="patientprofile-container">
-        <div
-          className="patientprofile-button-return"
-          onClick={handleReturnToPatientsList}
-        >
-          Retour
+        <div className="patientprofile-upper-flex">
+          <div
+            className="patientprofile-button-return"
+            onClick={handleReturnToPatientsList}
+          >
+            Retour
+          </div>
+          <div className="patientprofile-status-container">
+            <span>Prévoyance Santé: </span>
+            <span> xxxx</span>
+          </div>
         </div>
         <div id="patientprofile-flex-central-container">
           <div id="patientprofile-flex-central">
@@ -310,7 +308,10 @@ function PatientProfile() {
                 id="notes"
                 name="content"
                 value={noteData.content}
-                onChange={ChangeNote}
+                onChange={(e) =>
+                  setNoteData((s) => ({ ...s, content: e.target.value }))
+                }
+                className="patientprofile-note-content"
               ></textarea>
             </div>
             <div className="patientprofile-buttons-container">

@@ -1,7 +1,10 @@
 @use "../../styles/variables" as vars;
 
 .patientprofile-container {
-  margin: 60px;
+  margin: 30px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 .patientprofile-lines-container {
   margin: 20px 20px;
@@ -9,7 +12,7 @@
 }
 
 #patientprofile-flex-central {
-    display: flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -101,6 +104,11 @@
   }
 }
 
+.patientprofile-upper-flex {
+  display: flex;
+
+}
+
 .patientprofile-button-return {
   width: 150px;
   border: 1px solid white;
@@ -116,6 +124,24 @@
     background-color: vars.$background2-color;
     color: vars.$primary-color;
   }
+}
+
+///////////////////////////////////////////////
+/// Status prévoyance
+/// //////////////////////
+///
+
+.patientprofile-status-container {
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-size: 20px;
+  margin: 20px;
+  background-color: vars.$tertiary-color;
+  // height: 50px;
+  width: 800px;
 }
 
 ///////////////////////////////////////////////
@@ -179,5 +205,11 @@
   overflow-y: scroll;
   min-height: 100px;
   max-height: 300px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 
+.patientprofile-note-content {
+  white-space: pre-wrap;
+  word-break: break-word;
 }

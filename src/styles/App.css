@@ -138,6 +138,11 @@
   width: 550px;
 }
 
+#patientprofile-flex-central {
+  display: flex;
+  flex-direction: column;
+}
+
 .patientprofile-line {
   border: 1px solid white;
   padding: 5px 0;
@@ -242,12 +247,58 @@
 
 #patientprofile-flex-central-container {
   display: flex;
+  justify-content: center;
 }
 
 .patientprofile-notes-container {
-  width: 500px;
-  height: 300px;
-  background-color: red;
+  width: 600px;
+  height: 590px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: first baseline;
+}
+
+.patientprofile-notes-title {
+  background-color: #0e2f4e;
+  padding: 5px 0 5px 20px;
+}
+
+.patientprofile-note {
+  padding: 10px 20px;
+  background-color: #2563eb;
+}
+.patientprofile-note .patientprofile-note-date {
+  font-weight: bold;
+  font-size: 16px;
+}
+.patientprofile-note .patientprofile-note-info {
+  font-size: 16px;
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+.patientprofile-note-add {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.patientprofile-note-add label {
+  background-color: #0e2f4e;
+  padding: 5px 0 5px 20px;
+}
+.patientprofile-note-add textarea {
+  width: 578px;
+  min-height: 100px;
+  overflow-y: scroll;
+  resize: none;
+  padding: 5px 10px;
+}
+
+#patientprofile-notes {
+  overflow-y: scroll;
+  min-height: 100px;
+  max-height: 300px;
 }
 
 .connexion-lines-container {
@@ -311,6 +362,11 @@
 .connexion-button:hover {
   background-color: #f9f8ff;
   color: #0e2f4e;
+}
+
+.connexion-error {
+  text-align: center;
+  margin: 10px 0;
 }
 
 .home-container {

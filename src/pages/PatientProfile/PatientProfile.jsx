@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { DateNormalisation } from "../../components/logic/logic";
 import FormProfile from "../../components/FormProfile/FormProfile";
 import BlocProfile from "../../components/BlocProfile/BlocProfile";
 
@@ -19,6 +20,10 @@ function PatientProfile() {
   const [adresse, setAdresse] = useState("");
   const [telephone, setTelephone] = useState("");
 
+  const { id } = useParams();
+  console.log({ id });
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     nom: "",
     prenom: "",
@@ -28,6 +33,19 @@ function PatientProfile() {
     telephone: "",
   });
 
+  const [noteData, setNoteData] = useState({
+    patientId: id,
+    content: "",
+  });
+
+  const ChangeNote = (e) => {
+    let { name, value } = e.target;
+    setNoteData({
+      ...noteData,
+      [name]: value,
+    });
+  };
+
   const ChangeFormInfo = (e) => {
     let { name, value } = e.target;
     setFormData({
@@ -36,12 +54,9 @@ function PatientProfile() {
     });
   };
 
-  const { id } = useParams();
-  console.log({ id });
-  const navigate = useNavigate();
-
   const url = `/api/patients/${id}`;
   const urlNotes = `/api/notes/${id}`;
+  const urlAddNotes = `/api/notes`;
 
   useEffect(() => {
     if (patient) {
@@ -78,18 +93,22 @@ function PatientProfile() {
     loadPatient().catch(console.error);
   }, [url]);
 
-  useEffect(() => {
-    const loadNotesPatient = async () => {
+  const loadNotesPatient = async () => {
+    try {
       const res = await fetch(urlNotes, {
         credentials: "include",
       });
       if (!res.ok) throw new Error("Notes not found");
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       setNotes(data);
-    };
+    } catch (error) {
+      console.error("Erreur lors du chargement des notes:", error);
+    }
+  };
 
-    loadNotesPatient().catch(console.error);
+  useEffect(() => {
+    loadNotesPatient();
   }, [urlNotes]);
 
   const onSubmit = async (e) => {
@@ -167,6 +186,43 @@ function PatientProfile() {
     navigate("/patients");
   };
 
+  /////////
+
+  const onSubmitNote = async (e) => {
+    e.preventDefault();
+    const payload = {
+      patientId: noteData.patientId,
+      content: noteData.content,
+    };
+
+    const res = await fetch(urlAddNotes, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      console.error("POST failed", res.status, err);
+      window.alert(
+        "Erreur, impossible de créer une note sur la fiche du patient."
+      );
+      return;
+    } else {
+      window.alert("Note ajoutée avec succès.");
+
+      // AJOUT: Vider le champ de saisie
+      setNoteData({
+        patientId: id,
+        content: "",
+      });
+
+      // AJOUT: Recharger les notes
+      await loadNotesPatient();
+    }
+  };
+
   return (
     <>
       <div className="patientprofile-container">
@@ -177,7 +233,7 @@ function PatientProfile() {
           Retour
         </div>
         <div id="patientprofile-flex-central-container">
-          <div>
+          <div id="patientprofile-flex-central">
             {isUpdateActive ? (
               <FormProfile
                 patient_data={patient}
@@ -229,10 +285,42 @@ function PatientProfile() {
             )}
           </div>
           <div className="patientprofile-notes-container">
-            <div>Notes: </div>
-            {/* {notes.map((n, idx) => {
-              <div key={idx}>{n.content}</div>;
-            })} */}
+            <div>
+              <div className="patientprofile-notes-title">
+                Historique des consultations{" "}
+              </div>
+              <div id="patientprofile-notes">
+                {notes &&
+                  notes.map((n, idx) => (
+                    <div className="patientprofile-note" key={idx}>
+                      <div className="patientprofile-note-date">
+                        {DateNormalisation(n.createdAt)}:
+                      </div>
+                      <div className="patientprofile-note-info">
+                        {n.content}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+            <div className="patientprofile-note-add">
+              <label htmlFor="notes">Ajouter une note au dossier:</label>
+              <textarea
+                type="textarea"
+                id="notes"
+                name="content"
+                value={noteData.content}
+                onChange={ChangeNote}
+              ></textarea>
+            </div>
+            <div className="patientprofile-buttons-container">
+              <div
+                className="patientprofile-button patientprofile-button-validation"
+                onClick={onSubmitNote}
+              >
+                Ajouter
+              </div>
+            </div>
           </div>
         </div>
       </div>

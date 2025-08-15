@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../security/AuthProvider";
 
 function Connexion() {
+  const [error, setError] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -38,6 +39,7 @@ function Connexion() {
           .json()
           .catch(() => ({ message: "Erreur de connexion" }));
         console.error("POST failed", response.status, err);
+        setError("Identifiant ou mot de passe incorrect.")
         return;
       }
 
@@ -85,6 +87,7 @@ function Connexion() {
             />
           </label>
         </div>
+        <div className="connexion-error">{error}</div>
         <button type="submit" className="connexion-button " onClick={loginUser}>
           Se connecter
         </button>

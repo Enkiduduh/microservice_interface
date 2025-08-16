@@ -102,8 +102,10 @@ td {
 }
 
 .patientcreation-line {
-  border: 1px solid white;
+  border: 1px solid #0e2f4e;
   padding: 5px 0;
+  font-size: 20px;
+  background-color: #7188a1;
 }
 .patientcreation-line label,
 .patientcreation-line .patientcreation-line-label {
@@ -116,7 +118,7 @@ td {
 }
 .patientcreation-line input {
   width: 300px;
-  padding: 8px 0 8px 20px;
+  padding: 10px 0 10px 20px;
   border: none;
   background-color: lightgrey;
   color: black;
@@ -125,7 +127,7 @@ td {
   outline: none;
 }
 .patientcreation-line input:focus {
-  background-color: lightseagreen;
+  background-color: lightgreen;
 }
 .patientcreation-line .patientcreation-line-data {
   width: 150px;
@@ -149,6 +151,7 @@ td {
   margin: 5px 0;
   font-size: 18px;
   font-weight: bold;
+  color: #0e2f4e;
 }
 
 .patientcreation-button {
@@ -189,6 +192,7 @@ td {
   border: 1px solid #0e2f4e;
   padding: 5px 0;
   font-size: 20px;
+  background-color: #7188a1;
 }
 .patientprofile-line label,
 .patientprofile-line .patientprofile-line-label {
@@ -201,7 +205,7 @@ td {
 }
 .patientprofile-line input {
   width: 300px;
-  padding: 8px 0 8px 20px;
+  padding: 10px 0 10px 20px;
   border: none;
   background-color: lightgrey;
   color: black;
@@ -542,7 +546,7 @@ td {
 }
 
 .home-button {
-  width: 150px;
+  width: 170px;
   border: 1px solid white;
   padding: 10px 20px;
   text-align: center;

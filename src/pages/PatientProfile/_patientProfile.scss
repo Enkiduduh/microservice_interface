@@ -20,6 +20,7 @@
   border: 1px solid vars.$primary-color;
   padding: 5px 0;
   font-size: 20px;
+  background-color: vars.$secondary-color;
 
   label,
   .patientprofile-line-label {
@@ -33,7 +34,7 @@
 
   input {
     width: 300px;
-    padding: 8px 0 8px 20px;
+    padding: 10px 0 10px 20px;
     border: none;
     background-color: lightgrey;
     color: black;
@@ -107,7 +108,6 @@
 
 .patientprofile-upper-flex {
   display: flex;
-
 }
 
 .patientprofile-button-return {
@@ -120,7 +120,7 @@
   font-size: 20px;
   margin: 20px;
   cursor: pointer;
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: vars.$tertiary-color;
@@ -155,12 +155,11 @@
 }
 
 .patientprofile-status-flex {
-  display:flex;
+  display: flex;
   align-items: center;
 }
 .patientprofile-status {
-
-margin: 0 10px;
+  margin: 0 10px;
 }
 
 .patientprofile-status-badge {
@@ -179,20 +178,20 @@ margin: 0 10px;
   cursor: pointer;
   padding: 5px 10px;
   background-color: vars.$background2-color;
-  border-radius: 8px;;
+  border-radius: 8px;
   color: vars.$primary-color;
 }
 
 .patientprofile-keywords-container {
-position: absolute;
-width: 160px;
-background-color: vars.$background2-color;
-top:34px;
-left: 50%;
-padding: 20px;
-transform: translateX(-50%);
-color: vars.$primary-color;
-flex-direction: column;
+  position: absolute;
+  width: 160px;
+  background-color: vars.$background2-color;
+  top: 34px;
+  left: 50%;
+  padding: 20px;
+  transform: translateX(-50%);
+  color: vars.$primary-color;
+  flex-direction: column;
 }
 .patientprofile-keyword {
   padding: 5px 0;
@@ -201,7 +200,6 @@ flex-direction: column;
 ///////////////////////////////////////////////
 /// NOTES*
 /// //////////////////////
-
 
 #patientprofile-flex-central-container {
   display: flex;

@@ -1,11 +1,9 @@
 @use "../../styles/variables" as vars;
 
-
 .patientcreation-container {
   margin: 60px;
   width: 600px;
 }
-
 
 .patientcreation-button {
   border: 1px solid white;
@@ -20,9 +18,10 @@
 }
 
 .patientcreation-line {
-  border: 1px solid white;
+  border: 1px solid vars.$primary-color;
   padding: 5px 0;
-
+  font-size: 20px;
+  background-color: vars.$secondary-color;
   label,
   .patientcreation-line-label {
     margin: 10px;
@@ -36,7 +35,7 @@
 
   input {
     width: 300px;
-    padding: 8px 0 8px 20px;
+    padding: 10px 0 10px 20px;
     border: none;
     background-color: lightgrey;
     color: black;
@@ -44,7 +43,7 @@
     font-family: Helvetica, sans-serif;
     outline: none;
     &:focus {
-      background-color: lightseagreen;
+      background-color: lightgreen;
     }
   }
 
@@ -71,6 +70,7 @@
   margin: 5px 0;
   font-size: 18px;
   font-weight: bold;
+  color: vars.$primary-color;
 }
 
 .patientcreation-button {
@@ -83,7 +83,7 @@
   margin: 30px 0;
   background-color: darkslateblue;
   cursor: pointer;
-   background-color: vars.$tertiary-color;
+  background-color: vars.$tertiary-color;
   &:hover {
     background-color: vars.$background2-color;
     color: vars.$primary-color;

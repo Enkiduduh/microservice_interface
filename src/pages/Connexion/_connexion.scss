@@ -7,11 +7,13 @@
   padding: 40px;
   display: flex;
   flex-direction: column;
+  background-color: vars.$secondary-color;
 }
 .connexion-title {
   width: 100%;
   text-align: center;
   margin: 40px 0;
+  color: vars.$primary-color;
 }
 .connexion-line {
   label,

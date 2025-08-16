@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function PatientList() {
   const [patients, setPatients] = useState([]);
 
   const url = "api/patients";
+  const navigate = useNavigate();
+
+  const handleLinkToPatientId = (patientId) => {
+    navigate(`/patients/${patientId}`);
+  };
 
   useEffect(() => {
     const loadPatients = async () => {
@@ -17,48 +22,64 @@ function PatientList() {
 
   return (
     <div className="patientlist-container">
-      {patients.map((patient) => (
-        <div className="patientlist-lines-container" key={patient.id}>
-          <div>
-            <div className="patientlist-line">
-              <div className="patientlist-line-label">
-                Nom:
-                <div className="patientlist-line-data">{patient.nom ?? ""}</div>
-              </div>
-              <div className="patientlist-line-label">
-                Prénom:
-                <div className="patientlist-line-data">
-                  {patient.prenom ?? ""}
-                </div>
-              </div>
-            </div>
+      {patients && (
+        <div className="patientlist-display-infos">
+          <div className="patientlist-infos">
+            <div className="patientlist-infos-number">{patients.length}</div>
+            <div>Nombre de patients</div>
           </div>
-          <div>
-            <div className="patientlist-line">
-              <div className="patientlist-line-label">
-                Date de naissance:
-                <div className="patientlist-line-data">
-                  {patient.dateNaissance ?? ""}
-                </div>
-              </div>
-              {patient.genre == "M" ? (
-                <div className="patientlist-line-label">
-                  Genre:
-                  <div className="patientlist-line-data">Homme</div>
-                </div>
-              ) : (
-                <div className="patientlist-line-label">
-                  Genre:
-                  <div className="patientlist-line-data">Femme</div>
-                </div>
-              )}
-            </div>
+          <div className="patientlist-infos">
+            <div className="patientlist-infos-number">{patients.length}</div>
+            <div>Sans risque</div>
           </div>
-          <Link className="patientlist-button" to={`/patients/${patient.id}`}>
-            Consulter la fiche du patient
-          </Link>
+          <div className="patientlist-infos">
+            <div className="patientlist-infos-number">{patients.length}</div>
+            <div>Risque limité</div>
+          </div>
+          <div className="patientlist-infos">
+            <div className="patientlist-infos-number">{patients.length}</div>
+            <div>En danger</div>
+          </div>
+          <div className="patientlist-infos">
+            <div className="patientlist-infos-number">{patients.length}</div>
+            <div>Apparition précoce</div>
+          </div>
         </div>
-      ))}
+      )}
+      <table>
+        <thead>
+          <tr>
+            <th className="th-outer-right">Patient</th>
+            <th>Dernière consultation</th>
+            <th>Age</th>
+            <th>Date de naissance </th>
+            <th>Genre</th>
+            <th>Status Check</th>
+          </tr>
+        </thead>
+        <tbody>
+          {patients.map((patient) => (
+            <tr
+              className="tr-bg"
+              key={patient.id}
+              onClick={() => handleLinkToPatientId(patient.id)}
+            >
+              <td className="td-outer-left">
+                {patient.prenom ?? ""} {patient.nom ?? ""}
+              </td>
+              <td className="td-inner">xxx</td>
+              <td className="td-inner">age</td>
+              <td className="td-inner">{patient.dateNaissance ?? ""}</td>
+              {patient.genre == "M" ? (
+                <td className="td-inner">Homme</td>
+              ) : (
+                <td className="td-inner">Femme</td>
+              )}
+              <td className="td-outer-right">Status</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../security/AuthProvider";
+import logo_img from "../../../public/logo_mls.png";
 
 function Header() {
   const { authed, logout, user } = useAuth();
@@ -23,7 +24,8 @@ function Header() {
     <div className="header-container">
       <div className="header-logo">
         <Link className="header-logo-link" to="/">
-          MediLabo Solutions
+          <img src={logo_img} alt="" className="header-logo-img" />
+          <div>MediLabo Solutions</div>
         </Link>
       </div>
       <nav className="header-nav-links">

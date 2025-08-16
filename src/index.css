@@ -1,12 +1,15 @@
 :root {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #7188a1;
+  color: #f9f8ff;
+  background-image: url("../../../public/bg_medical.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 body {
   margin: 0;
   display: flex;
-  min-width: 100vw;
+  width: 100vw;
   min-height: 100vh;
   font-family: Helvetica, sans-serif;
   justify-content: center;

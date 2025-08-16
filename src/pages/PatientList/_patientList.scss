@@ -1,48 +1,83 @@
-.patientlist-lines-container {
-  margin: 50px 20px;
-  display: flex;
-  justify-content: center;
+@use "../../styles/variables" as vars;
 
+.patientlist-container {
+  padding: 80px 0;
 }
 
-.patientlist-line {
-  border: 1px solid white;
-  padding: 5px 0;
-
-  .patientlist-line-label {
-    margin: 10px;
-    width: 350px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 30px;
-  }
-
-  .patientlist-line-data {
-    width: 150px;
-    padding: 5px 0 5px 20px;
-    border: none;
-    background-color: lightgrey;
-    color: black;
-    font-size: 16px;
-  }
+.patientlist-line-data {
+  width: 150px;
+  padding: 5px 0 5px 20px;
+  border: none;
+  font-size: 16px;
 }
 
-.patientlist-buttons-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+table {
+  border-spacing: 0px 0px;
+  margin-left: auto;
+  margin-right: auto;
 
-.patientlist-button {
-  border: 1px solid white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  cursor: pointer;
+  background-color: vars.$background2-color;
+}
+th {
+  padding: 20px 35px;
+  border: 1px solid vars.$secondary-color;
+  text-align: center;
+  color: vars.$quaternary-color;
+  background-color: vars.$tertiary-color;
+}
+.th-outer-right {
+  text-align: left;
+  width: 270px;
+}
+tr {
+  transition: all 0.33s ease;
   &:hover {
-    background-color: rgb(159, 158, 158);
+    background-color: vars.$background1-color;
+    cursor: pointer;
+    td {
+      color: vars.$tertiary-color;
+    }
   }
+}
+td {
+  color: vars.$primary-color;
+  padding: 20px 35px;
+  text-align: center;
+  border-bottom: 1px solid vars.$secondary-color;
+  border-top: 1px solid vars.$secondary-color;
+}
+
+.td-inner {
+  border-left: 1px solid vars.$secondary-color;
+}
+.td-outer-left {
+  border-left: 1px solid vars.$secondary-color;
+  text-align: left;
+}
+.td-outer-right {
+  border-right: 1px solid vars.$secondary-color;
+  border-left: 1px solid vars.$secondary-color;
+}
+
+////////////////////////////
+///
+
+.patientlist-display-infos {
+  display: flex;
+  justify-content: center;
+}
+
+.patientlist-infos {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  background: vars.$background2-color;
+  color: vars.$tertiary-color;
+  width: 150px;
+  border-radius: 8px;
+  margin: 15px;
+  padding: 15px 10px;
+}
+.patientlist-infos-number {
+  font-size: 22px;
 }

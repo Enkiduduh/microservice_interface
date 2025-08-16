@@ -1,13 +1,70 @@
+@use "../../styles/variables" as vars;
+
 .home-container {
-width: 100%;
-min-height: 90vh;
-background-image: url("../../../public/medilabo.jpeg");
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
+  width: 100%;
+  min-height: 90vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.home-img {
+.home-central {
+  width: 80vw;
+  height: 70vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid white;
+  background-color: rgba(0, 0, 0, 0.119);
+  border-radius: 10px;
+}
 
+.home-central-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 30px;
+}
 
+.home-photo-img {
+  aspect-ratio: 16/11;
+}
+
+.home-central-catch {
+  font-size: 40px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+.catch-up {
+  color: vars.$quaternary-color;
+}
+
+.catch-down {
+  color: vars.$primary-color;
+}
+.catch-title {
+  color: vars.$tertiary-color;
+}
+.home-button {
+  width: 150px;
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  font-size: 20px;
+  margin: 40px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: vars.$tertiary-color;
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    background-color: vars.$background2-color;
+    color: vars.$primary-color;
+  }
 }

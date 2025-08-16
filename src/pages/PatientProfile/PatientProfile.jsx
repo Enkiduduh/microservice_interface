@@ -165,21 +165,22 @@ function PatientProfile() {
           credentials: "include",
         });
         const data = await res.json(); // {status, matchedCount, matchedKeywords}
+        console.log(data);
         setPrevoyance(data);
-        switch (data.status) {
-          case "none":
+        switch (data.code) {
+          case "NONE":
             setStatus("Aucun risque");
             setStatusColor("green");
             break;
-          case "early":
+          case "BORDERLINE":
             setStatus("Risque limité");
             setStatusColor("yellow");
             break;
-          case "inDanger":
+          case "IN_DANGER":
             setStatus("Danger");
             setStatusColor("darkorange");
             break;
-          case "EarlyOnset":
+          case "EARLY_ONSET":
             setStatus("Apparition précoce");
             setStatusColor("darkred");
             break;

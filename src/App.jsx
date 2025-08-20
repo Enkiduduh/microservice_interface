@@ -14,7 +14,8 @@ import PageConnexion from "./pages/Connexion/Connexion";
 import PageHome from "./pages/Home/Home";
 import Footer from "./layout/Footer/Footer";
 import Header from "./layout/Header/Header";
-
+import Page404 from "./pages/Page404/Page404";
+import Page500 from "./pages/Page500/Page500";
 function App() {
   return (
     <>
@@ -33,6 +34,8 @@ function App() {
               <Route path="/patients" element={<PagePatientList />} />
               <Route path="/patients/:id" element={<PagePatientProfile />} />
               <Route path="/patients/add" element={<PagePatientCreation />} />
+              <Route path="/oops" element={<Page500 />} />
+              <Route path="*" element={<Page404 />} />
             </Route>
 
             {/* Routes publiques */}

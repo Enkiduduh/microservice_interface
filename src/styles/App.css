@@ -1,5 +1,5 @@
 .patientlist-container {
-  padding: 80px 0;
+  margin: 80px 0;
 }
 
 .patientlist-line-data {
@@ -682,4 +682,26 @@ td {
 }
 .footer-section-link:hover {
   color: gold;
+}
+
+.page404-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.34);
+}
+
+.page500-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.34);
 }/*# sourceMappingURL=App.css.map */
